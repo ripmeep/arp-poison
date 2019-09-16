@@ -5,7 +5,7 @@ An arp-poisoning tool created in C - Made for Linux
 
 **Compile:**
     
-    **$** gcc -o arp-poison arp-poison.c
+    $ gcc -o arp-poison arp-poison.c
  
  **Run:**
  
