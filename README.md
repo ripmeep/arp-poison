@@ -4,8 +4,10 @@ An arp-poisoning tool created in C - Made for Linux
 **Usage**
 
 **Compile:**
-    gcc -o arp-poison arp-poison.c
+    
+    **$** gcc -o arp-poison arp-poison.c
  
  **Run:**
-     __**root@linux**__ $ ./arp-poison <INTERFACE> <TARGET IP> <GATEWAY IP>
-     __**root@linux**__ $ ./arp-poison wlan0 192.168.0.123 192.168.0.1
+ 
+    **$** ./arp-poison <INTERFACE> <TARGET IP> <GATEWAY IP>
+    **$** ./arp-poison wlan0 192.168.0.123 192.168.0.1
