@@ -296,5 +296,3 @@ int main(int argc, char ** argv) {
 
 	return 0;
 }
-
-%02X%02X%02X
